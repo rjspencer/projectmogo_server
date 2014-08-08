@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="/css/application.css">
+  <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+
+  <title></title>
+</head>
+<body>
+  <header>
+    <h1>Mogo</h1>
+    <div id="header_login">
+      <% if logged_in? %>
+      <a href="/logout">Logout</a>
+      <% else %>
+      <form name="login" action="/login" method="post">
+        <span class="login_field">Username: <br><input type="text" name="user[username]" /></span>
+        <span class="login_field">Password: <br><input type="password" name="user[password]" /></span>
+        <input type="submit" value="Login" />
+      </form>
+      <span >Not a member? <a href="/user" >Create Account</a></span>
+      <% end %>
+    </div>
+  </header>
+  <div id="main">
+  <%= yield %>
+</div>
+</body>
+</html>
